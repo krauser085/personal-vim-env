@@ -1,3 +1,58 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+"NERD TREE Plugin - tree구조 보여줌
+Plugin 'The-NERD-Tree'
+
+" 맨 밑에 상태표시줄 커스터마이징 플러그인
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+"파일 검색 플러그인
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" XML 자동완성 플러그인
+Plugin 'mattn/emmet-vim'
+
+" 주석처리 플러그인
+Plugin 'scrooloose/nerdcommenter'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+
+
+" for vim-airline
+" 버퍼리스트를 상단에 출력
+let g:airline#extensions#tabline#enabled = 1 
+" 버퍼리스트를 이름만 보여줌
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_theme='luna'
+set laststatus=2 " turn on bottom bar
+
+
 " 줄번호 설정
 set nu
 
@@ -10,17 +65,48 @@ set cindent
 
 "파일 인코딩 설정
 set fileencoding=utf-8
-"esc를 누를경우 영문키보드로 전환
-"inoremap <ESC> <ESC>:set imdisable<CR>
-set noimd
-"set imi=1
-"set ims=-1
 
 "구문 강조
 if has("syntax")
  syntax on
 endif
 
-"컬러 스킴 사용
-"colorscheme jellybeans
-"잘 모르니깐 일단 남겨두자 나중에 컬러스킴도 꼭 세팅해 봐야지 ㅋㅋㅋ
+"하이라이트 활성화
+set hls
+
+"미완성 커맨드 표시
+set showcmd
+
+"tab 입력시 들어가는 사이즈 설정
+:set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
+:set list
+
+"tab사이즈 변경
+set tabstop=4
+set softtabstop=0 noexpandtab
+set shiftwidth=4
+"
+"HTML자동완성 사용
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+
+
+"#########################################
+"	단축키모음			 #
+"#########################################
+
+" Copy & Paste
+map <F3> "+y
+map <F4> "+p
+
+" NERDTree
+map <F5> :NERDTreeToggle<cr>
+map <F6> :NERDTreeFind<CR>
+
+" 버퍼이동용 단축키
+map gn :bn<cr>
+map gp :bp<cr>
+map gd :bd<cr>  
+
+" move among buffers with CTRL
+map <C-J> :bprev<CR>
+map <C-K> :bnext<CR>
