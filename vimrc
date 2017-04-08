@@ -52,6 +52,8 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_theme='luna'
 set laststatus=2 " turn on bottom bar
 
+"mapleader 변경하기 (default상태는 \이다)
+let mapleader=","
 
 " 줄번호 설정
 set nu
