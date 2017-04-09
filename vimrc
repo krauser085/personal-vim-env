@@ -87,10 +87,14 @@ set showcmd
 set tabstop=4
 set softtabstop=0 noexpandtab
 set shiftwidth=4
-"
+
+" ctags설정정보 추가
+set autochdir
+set tags=tags;
+
 "HTML자동완성 사용
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 "#########################################
 "	단축키모음			 #
